@@ -3,3 +3,5 @@ function CheckingAccount() {
         <h1>Checking Account</h1>
     )
 }
+
+export default CheckingAccount;
