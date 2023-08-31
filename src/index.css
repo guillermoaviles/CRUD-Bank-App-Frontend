@@ -15,7 +15,7 @@ body {
 }
 
 .home-container h2 {
-  font-size: 34px;
+  font-size: 24px;
   width: 50vw;
 }
 
@@ -121,6 +121,7 @@ form {
   text-decoration: none;
   width: calc(50% - 10px);
   text-align: center;
+  justify-self: center;
 }
 
 .card-button:hover {
@@ -157,4 +158,8 @@ form {
   color: #515151;
 }
 
+.account-type {
+  color: #2c2c2c;
+  margin: 0;
+}
 
