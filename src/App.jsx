@@ -7,6 +7,8 @@ import HomePage from "./pages/HomePage";
 import CheckingAccount from "./pages/CheckingAccount";
 import SavingsAccount from "./pages/SavingsAccount";
 import InvestmentAccount from "./pages/InvestmentAccount";
+import SendMoney from "./pages/SendMoney";
+import Summary from "./pages/Summary";
  
 function App() {
   return (
@@ -19,6 +21,8 @@ function App() {
         <Route path="/accounts/checking/:accountId" element={<CheckingAccount />} />
         <Route path="/accounts/savings/:accountId" element={<SavingsAccount />} />
         <Route path="/accounts/investment/:accountId" element={<InvestmentAccount />} />
+        <Route path="/accounts/investment/:accountId" element={<SendMoney />} />
+        <Route path="/accounts/investment/:accountId" element={<Summary />} />
       </Routes>
     </div>
   );
