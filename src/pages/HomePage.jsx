@@ -11,6 +11,8 @@ function HomePage() {
   const [savingsAccounts, setSavingsAccounts] = useState([]);
   const [investmentAccounts, setInvestmentAccounts] = useState([]);
 
+  const [fetching, setFetching] = useState(true);
+
   const apiURL = "http://localhost:8080/api/accounts/checking";
 
   // const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJndWlsbGUiLCJyb2xlcyI6WyJST0xFX1VTRVIiXSwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL2FwaS9sb2dpbiIsImV4cCI6MTY5MzUzNjMxM30.fEyUCD9QgV0v24v5NEdQOJhY7Ned481jssDxovtOoFg";
@@ -52,20 +54,28 @@ function HomePage() {
         <h2 className="account-type">My Checking Accounts (2)</h2>
       </div>
       {showCheckingAccounts && (
-        <>
+        checkingAccounts.map((checkingAccount) => {
           <div className="account-card">
-            <Link className="link" to={"/accounts/checking/test"}>
-              <h2>Checking Account 1</h2>
-              <p>Available Balance: $100</p>
+            <Link className="link" to={`/accounts/checking/${checkingAccount.accountNumber}`}>
+              <h2>Checking Account {checkingAccount.accountNumber}</h2>
+              <p>Available Balance: ${checkingAccount.balance}</p>
             </Link>
           </div>
-          <div className="account-card">
-            <Link className="link" to={"/accounts/checking/test"}>
-              <h2>Checking Account 2</h2>
-              <p>Available Balance: $85.50</p>
-            </Link>
-          </div>
-        </>
+        })
+        // <>
+        //   <div className="account-card">
+        //     <Link className="link" to={"/accounts/checking/test"}>
+        //       <h2>Checking Account 1</h2>
+        //       <p>Available Balance: $100</p>
+        //     </Link>
+        //   </div>
+        //   <div className="account-card">
+        //     <Link className="link" to={"/accounts/checking/test"}>
+        //       <h2>Checking Account 2</h2>
+        //       <p>Available Balance: $85.50</p>
+        //     </Link>
+        //   </div>
+        // </>
       )}
       <div className="link-card" onClick={handleSavingsAccountsClick}>
         <h2 className="account-type">My Savings Accounts (1)</h2>
