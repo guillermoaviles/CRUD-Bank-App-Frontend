@@ -75,6 +75,15 @@ form {
   padding: 20px;
 }
 
+.account-card {
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+  margin-bottom: 20px;
+  margin-top: -35px;
+  text-align: center;
+  padding: 20px;
+}
+
 .link-card:hover {
   background-color: #cf0f2c;
 }
@@ -89,15 +98,15 @@ form {
 
 .link h2 {
   color: #2c2c2c;
-  font-size: 26px;
+  font-size: 22px;
   margin: 0;
 }
 
 .link p {
   color: #515151;
-  font-size: 24px;
+  font-size: 20px;
   margin: 0;
-  padding-bottom: 15px;
+  padding-top: 10px;
 }
 
 .container {
