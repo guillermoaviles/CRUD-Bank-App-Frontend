@@ -4,18 +4,21 @@ import { createContext } from "react";
 const UserContext = createContext();
 
 function UserContextWrapper(props) {
-  const [theme, setTheme] = useState("light");
+  const [user, setUser] = useState({});
+  const [fetching, setFetching] = useState(true);
 
-  const toggleTheme = () => {
-    if (theme === "light") {
-      setTheme("dark");
-    } else {
-      setTheme("light");
-    }
-  };
+  const apiURL = "http://localhost:8080/api/users";
+
+  useEffect(() => {
+    console.log("useEffect - Initial render (Mounting)");
+    axios.get(apiURL).then((response) => {
+      setUser(response.data);
+      setFetching(false);
+    });
+  }, []);
 
   return (
-    <UserContext.Provider value={{theme, toggleTheme}}>
+    <UserContext.Provider value={{ user }}>
       {props.children}
     </UserContext.Provider>
   );
