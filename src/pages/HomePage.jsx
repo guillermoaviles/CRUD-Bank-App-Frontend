@@ -27,18 +27,17 @@ function HomePage() {
       {showCheckingAccounts && (
         <>
           <div className="link-card">
-            <Link className="link" to={"/checking-account-1"}>
+            <Link className="link" to={"/accounts/checking/test"}>
               <h2>Checking Account 1</h2>
               <p>Available Balance: $100</p>
             </Link>
           </div>
           <div className="link-card">
-            <Link className="link" to={"/checking-account-2"}>
+            <Link className="link" to={"/accounts/checking/test"}>
               <h2>Checking Account 2</h2>
               <p>Available Balance: $100</p>
             </Link>
           </div>
-          {/* Add more checking account link cards here */}
         </>
       )}
       <div className="link-card" onClick={handleSavingsAccountsClick}>
@@ -47,7 +46,7 @@ function HomePage() {
       {showSavingsAccounts && (
         <>
           <div className="link-card">
-            <Link className="link" to={"/checking-account-1"}>
+            <Link className="link" to={"/accounts/savings/test"}>
               <h2>Savings Account 1</h2>
               <p>Available Balance: $100</p>
             </Link>
@@ -60,18 +59,17 @@ function HomePage() {
       {showInvestmentAccounts && (
         <>
           <div className="link-card">
-            <Link className="link" to={"/checking-account-1"}>
+            <Link className="link" to={"/accounts/investment/test"}>
               <h2>Investment Account 1</h2>
               <p>Total Equity: $24,502</p>
             </Link>
           </div>
           <div className="link-card">
-            <Link className="link" to={"/checking-account-2"}>
+            <Link className="link" to={"/accounts/investment/test"}>
               <h2>Investment Account 2</h2>
               <p>Total Equity: $2,212</p>
             </Link>
           </div>
-          {/* Add more checking account link cards here */}
         </>
       )}
       <div className="card">
