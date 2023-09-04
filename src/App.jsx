@@ -18,11 +18,11 @@ function App() {
       <Routes>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/" element={<HomePage />} />
-        <Route path="/accounts/checking/:accountId" element={<CheckingAccount />} />
-        <Route path="/accounts/savings/:accountId" element={<SavingsAccount />} />
-        <Route path="/accounts/investment/:accountId" element={<InvestmentAccount />} />
-        <Route path="/accounts/investment/:accountId" element={<SendMoney />} />
-        <Route path="/accounts/investment/:accountId" element={<Summary />} />
+        <Route path="/user/accounts/checking/:userId/:accountId" element={<CheckingAccount />} />
+        <Route path="/user/accounts/savings/:userId/:accountId" element={<SavingsAccount />} />
+        <Route path="/user/accounts/investment/:userId/:accountId" element={<InvestmentAccount />} />
+        <Route path="/user/sendMoney/:userId" element={<SendMoney />} />
+        <Route path="/user/summary/:userId" element={<Summary />} />
       </Routes>
     </div>
   );

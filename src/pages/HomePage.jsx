@@ -10,10 +10,6 @@ function HomePage() {
   const [showSavingsAccounts, setShowSavingsAccounts] = useState(false);
   const [showInvestmentAccounts, setShowInvestmentAccounts] = useState(false);
 
-  const [checkingAccounts, setCheckingAcounts] = useState([]);
-  const [savingsAccounts, setSavingsAccounts] = useState([]);
-  const [investmentAccounts, setInvestmentAccounts] = useState([]);
-
   const handleCheckingAccountsClick = () => {
     setShowCheckingAccounts(!showCheckingAccounts);
   };
@@ -25,8 +21,6 @@ function HomePage() {
   const handleInvestmentAccountsClick = () => {
     setShowInvestmentAccounts(!showInvestmentAccounts);
   };
-
-  console.log("checkingAccounts", checkingAccounts);
 
   return (
     <div className="home-container">
@@ -81,17 +75,23 @@ function HomePage() {
         ))}
 
       <div className="card">
-        <Link className="card-button" to={"/button1"}>
+        <Link className="card-button" to={`/user/sendMoney/${user.id}`}>
           Send Money
         </Link>
-        <Link className="card-button" to={"/button2"}>
+        <Link className="card-button" to={"/summary"}>
           Summary
         </Link>
-        <Link className="card-button" to={"/button3"}>
-          Button 3
+        <Link className="card-button" to={"/"}>
+          Add Checking Account
         </Link>
         <Link className="card-button" to={"/button4"}>
-          Button 4
+          Add Savings Account
+        </Link>
+        <Link className="card-button" to={"/button4"}>
+          Add Investment Account
+        </Link>
+        <Link className="card-button" to={"/button4"}>
+          Contact Customer Service
         </Link>
       </div>
     </div>
