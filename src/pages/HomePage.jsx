@@ -24,9 +24,9 @@ function HomePage() {
 
   return (
     <div className="home-container">
-      <h1 className="welcome">Welcome to your account, Guillermo.</h1>
+      <h1 className="welcome">Welcome to your account, {user?.name}.</h1>
       <div className="link-card" onClick={handleCheckingAccountsClick}>
-        <h2 className="account-type">My Checking Accounts (2)</h2>
+        <h2 className="account-type">My Checking Accounts ({user?.checkingAccounts.length})</h2>
       </div>
       {user?.checkingAccounts &&
         showCheckingAccounts &&
@@ -75,7 +75,7 @@ function HomePage() {
         ))}
 
       <div className="card">
-        <Link className="card-button" to={`/user/sendMoney/${user.id}`}>
+        <Link className="card-button" to={`/user/sendMoney/${user?.id}`}>
           Send Money
         </Link>
         <Link className="card-button" to={"/summary"}>

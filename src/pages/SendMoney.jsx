@@ -57,8 +57,13 @@ function SendMoney() {
   }, [fromAccount, toAccount, amount]);
 
   const handleSendMoney = () => {
-    // Implement your logic to send money here
-    // Use the values of fromAccount, toAccount, and amount
+    axios
+      .patch(`http://localhost:8080/users/sendMoney/${fromAccount}/${toAccount}/${amount}`)
+      .then((response) => {
+        setFromAccount(checkingAccounts[0].accountNumber)
+        setFromAccount(mergedAccounts[0].accountNumber);
+        setAmount("");
+      });
   };
 
   return (
@@ -85,7 +90,6 @@ function SendMoney() {
             value={toAccount}
             onChange={(e) => setToAccount(e.target.value)}
           >
-            {/* Populate the "To" dropdown with account options */}
             {allAccounts.map((account) => (
               <option key={account.accountNumber} value={account.accountNumber}>
                 {`Account ${account.accountNumber}`}
