@@ -103,6 +103,7 @@ function SendMoney() {
         />
       </div>
       <button
+        className="send-button"
         onClick={handleSendMoney}
         disabled={!sendButtonEnabled}
       >
