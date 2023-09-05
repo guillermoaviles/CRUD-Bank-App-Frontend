@@ -73,6 +73,12 @@ form {
   margin-bottom: 20px;
   text-align: center;
   padding: 20px;
+  position: relative;
+  z-index: 100;
+}
+
+.link-card.open{
+  background-color: #cf0f2c;
 }
 
 .account-card {
@@ -86,9 +92,10 @@ form {
 
 .link-card:hover {
   background-color: #cf0f2c;
+  
 }
 
-.link-card h2:hover {
+.link-card:hover > h2 {
   color: rgb(255, 255, 255); /* Text color on hover */
 }
 

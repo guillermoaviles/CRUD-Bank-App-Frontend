@@ -58,7 +58,7 @@ function SendMoney() {
 
   const handleSendMoney = () => {
     axios
-      .patch(`http://localhost:8080/users/sendMoney/${fromAccount}/${toAccount}/${amount}`)
+      .patch(`http://localhost:8080/api/users/sendMoney/${fromAccount}/${toAccount}/${amount}`)
       .then((response) => {
         setFromAccount(checkingAccounts[0].accountNumber)
         setFromAccount(mergedAccounts[0].accountNumber);
