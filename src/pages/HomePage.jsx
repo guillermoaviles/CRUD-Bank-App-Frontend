@@ -22,6 +22,45 @@ function HomePage() {
     setShowInvestmentAccounts(!showInvestmentAccounts);
   };
 
+  const handleAddCheckingAccount = () => {
+    const body = {
+      owner: user.name,
+    };
+    axios
+    .post(
+      `http://localhost:8080/api/users/addCheckingAccount/${user.id}`,
+      body
+    )
+    .then((response) => {
+    });
+  }
+
+  const handleAddSavingsAccount = () => {
+    const body = {
+      owner: user.name,
+    };
+    axios
+    .post(
+      `http://localhost:8080/api/users/addSavingsAccount/${user.id}`,
+      body
+    )
+    .then((response) => {
+    });
+  }
+  
+  const handleAddInvestmentAccount = () => {
+    const body = {
+      owner: user.name,
+    };
+    axios
+    .post(
+      `http://localhost:8080/api/users/addInvestmentAccount/${user.id}`,
+      body
+    )
+    .then((response) => {
+    });
+  }
+
   return (
     <div className="home-container">
       <h1 className="welcome">Welcome to your account, {user?.name}.</h1>
@@ -81,15 +120,15 @@ function HomePage() {
         <Link className="card-button" to={"/summary"}>
           Summary
         </Link>
-        <Link className="card-button" to={"/"}>
+        <div className="card-button" onClick={handleAddCheckingAccount}>
           Add Checking Account
-        </Link>
-        <Link className="card-button" to={"/button4"}>
+        </div>
+        <div className="card-button" onClick={handleAddSavingsAccount}>
           Add Savings Account
-        </Link>
-        <Link className="card-button" to={"/button4"}>
+        </div>
+        <div className="card-button" onClick={handleAddInvestmentAccount}>
           Add Investment Account
-        </Link>
+        </div>
         <Link className="card-button" to={"/button4"}>
           Contact Customer Service
         </Link>
