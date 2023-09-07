@@ -40,11 +40,11 @@ function CheckingAccount() {
                   </p>
                   <p>
                     <strong>Remaining balance: </strong>
-                    {transaction.accountTotal}
+                    ${transaction.accountTotal}
                   </p>
                   <p>
                     <strong>Amount: </strong>
-                    {transaction.amount}
+                    ${transaction.amount}
                   </p>
                 </div>
               </div>
