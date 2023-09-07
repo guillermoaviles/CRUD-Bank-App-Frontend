@@ -13,6 +13,7 @@ function InvestmentAccount() {
   const [account, setAccount] = useState({});
   const [amount, setAmount] = useState("");
   const [availableBalance, setAvailableBalance] = useState(0);
+  const [totalEquityWithYield, setTotalEquityWithYield] = useState(0);
   const [sendButtonEnabled, setSendButtonEnabled] = useState(false);
 
   useEffect(() => {
@@ -35,6 +36,12 @@ function InvestmentAccount() {
             `http://localhost:8080/api/accounts/investment/availableBalance/${accountId}`
         )
         const unlockedBalance = availableBalanceResponse.data;
+        
+        // Fetch total equity with yield
+        const totalEquityWithYieldResponse = await axios.get(
+            `http://localhost:8080/api/accounts/investment/totalBalanceWithYield/${accountId}`
+        )
+        const totalEquityWithYield = totalEquityWithYieldResponse.data;
 
         // Set the transaction list in state
         setTransactions(transactionList);
@@ -44,6 +51,9 @@ function InvestmentAccount() {
 
         // Set available balance in state
         setAvailableBalance(unlockedBalance);
+        
+        // Set total equity with yield in state
+        setTotalEquityWithYield(totalEquityWithYield);
 
         setFetching(false);
       } catch (error) {
@@ -72,10 +82,10 @@ function InvestmentAccount() {
     <>
       <h1>Investment Account {accountId}</h1>
       <h2>
-        <strong>Current Equity: </strong>${account.balance}
+        <strong>Current Equity: </strong>${parseFloat(totalEquityWithYield).toFixed(2)}
       </h2>
       <h2>
-        <strong>Unlocked Equity: </strong>${availableBalance}
+        <strong>Unlocked Equity: </strong>${parseFloat(availableBalance).toFixed(2)}
       </h2>
       <h2>
         <strong>Annual Percent Yield: </strong>

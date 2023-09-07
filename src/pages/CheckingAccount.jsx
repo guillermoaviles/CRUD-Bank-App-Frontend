@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { UserContext } from "../context/user.context";
 import axios from "axios";
 import loading from "../assets/ZKZG.gif";
@@ -63,7 +63,25 @@ function CheckingAccount() {
               <div className="details-div">
                 <div className="transaction-card-details">
                   <div>
-                    <p><strong>Transaction date: </strong></p>
+                    {transaction.amount > 0 ? (
+                      <h2>Received ${transaction.amount}</h2>
+                    ) : (
+                      <h2>Sent ${transaction.amount * -1}</h2>
+                    )}
+                    {transaction.amount > 0 ? (
+                      <p>
+                        <strong>From: </strong>
+                        {transaction.counterparty}
+                      </p>
+                    ) : (
+                      <p>
+                        <strong>To: </strong>
+                        {transaction.counterparty}
+                      </p>
+                    )}
+                    <p>
+                      <strong>Transaction date: </strong>
+                    </p>
                     <p className="transaction-date">
                       {transaction.transactionDate[1]}/
                       {transaction.transactionDate[2]}/
@@ -74,14 +92,16 @@ function CheckingAccount() {
                     <strong>Remaining balance: </strong>$
                     {transaction.accountTotal}
                   </p>
-                  <p>
-                    <strong>Amount: </strong>${transaction.amount}
-                  </p>
                 </div>
               </div>
             </div>
           );
         })}
+        <div className="card">
+          <Link className="card-button" to={`/user/sendMoney/${user?.id}`}>
+            Send Money
+          </Link>
+        </div>
       </div>
     </>
   );
