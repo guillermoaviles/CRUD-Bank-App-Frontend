@@ -73,7 +73,7 @@ function HomePage() {
           <div className="account-card" key={checkingAccount.accountNumber}>
             <Link
               className="link"
-              to={`/accounts/checking/${checkingAccount.accountNumber}`}
+              to={`/user/accounts/checking/${user?.id}/${checkingAccount.accountNumber}`}
             >
               <h2>Checking Account {checkingAccount.accountNumber}</h2>
               <p>Available Balance: ${checkingAccount.balance}</p>
