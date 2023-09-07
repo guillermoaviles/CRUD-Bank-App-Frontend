@@ -87,6 +87,12 @@ form {
   border-radius: 10px;
 } */
 
+.loading-transaction {
+  height: 50px;
+  padding: 15px;
+  margin: auto;
+}
+
 .details-div {
   display: flex;
   height: 300px;

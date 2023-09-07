@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { UserContext } from "../context/user.context";
 import axios from "axios";
-import loading from "../assets/ZKZG.gif"
+import loading from "../assets/ZKZG.gif";
 
 function CheckingAccount() {
   const { userId, accountId } = useParams();
@@ -10,23 +10,51 @@ function CheckingAccount() {
 
   const [fetching, setFetching] = useState(true);
   const [transactions, setTransactions] = useState([]);
-
-  const apiURL = `http://localhost:8080/api/transactions/byAccount/${accountId}`;
+  const [account, setAccount] = useState({});
 
   useEffect(() => {
-    console.log("useEffect - Initial render (Mounting)");
-    axios.get(apiURL).then((response) => {
-      setTransactions(response.data);
-      setFetching(false);
-    });
-  }, []);
+    const fetchAccountData = async () => {
+      try {
+        // Fetch transactions
+        const transactionsResponse = await axios.get(
+          `http://localhost:8080/api/transactions/byAccount/${accountId}`
+        );
+        const transactionList = transactionsResponse.data;
+
+        // Fetch checking account data
+        const checkingAccountResponse = await axios.get(
+          `http://localhost:8080/api/accounts/checking/${accountId}`
+        );
+        const checkingAccount = checkingAccountResponse.data;
+
+        // Set the transaction list in state
+        setTransactions(transactionList);
+
+        // Set the checking account metadata in state
+        setAccount(checkingAccount);
+
+        setFetching(false);
+      } catch (error) {
+        console.error("Error fetching accounts:", error);
+      }
+    };
+
+    fetchAccountData();
+  }, [userId, user]);
 
   return (
     <>
       <h1>Checking Account {accountId}</h1>
+      <h2>
+        <strong>Available Balance: </strong>${account.balance}
+      </h2>
       <div className="container">
         {fetching && (
-          <img src={loading} alt="transaction-loading" className="loading-transaction" />
+          <img
+            src={loading}
+            alt="transaction-loading"
+            className="loading-transaction"
+          />
         )}
 
         {transactions.map((transaction) => {
@@ -36,15 +64,18 @@ function CheckingAccount() {
                 <div className="transaction-card-details">
                   <p>
                     <strong>Transaction date: </strong>
-                    {transaction.transactionDate}
+                    <p className="transaction-date">
+                      {transaction.transactionDate[1]}/
+                      {transaction.transactionDate[2]}/
+                      {transaction.transactionDate[0]}
+                    </p>
                   </p>
                   <p>
-                    <strong>Remaining balance: </strong>
-                    ${transaction.accountTotal}
+                    <strong>Remaining balance: </strong>$
+                    {transaction.accountTotal}
                   </p>
                   <p>
-                    <strong>Amount: </strong>
-                    ${transaction.amount}
+                    <strong>Amount: </strong>${transaction.amount}
                   </p>
                 </div>
               </div>
