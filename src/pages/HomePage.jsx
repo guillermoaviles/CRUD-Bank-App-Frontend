@@ -87,7 +87,7 @@ function HomePage() {
       {showSavingsAccounts && (
         <>
           <div className="account-card">
-            <Link className="link" to={"/accounts/savings/test"}>
+            <Link className="link" to={`/user/accounts/savings/${user?.id}/${savingsAccount.accountNumber}`}>
               <h2>Savings Account 1</h2>
               <p>Available Balance: $150</p>
             </Link>
@@ -105,7 +105,7 @@ function HomePage() {
           <div className="account-card" key={investmentAccount.accountNumber}>
             <Link
               className="link"
-              to={`/accounts/investment/${investmentAccount.accountNumber}`}
+              to={`/user/accounts/investment/${user?.id}/${investmentAccount.accountNumber}`}
             >
               <h2>Investment Account {investmentAccount.accountNumber}</h2>
               <p>Total Equity: ${investmentAccount.balance}</p>

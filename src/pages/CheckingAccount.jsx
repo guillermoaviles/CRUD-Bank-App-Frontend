@@ -62,14 +62,14 @@ function CheckingAccount() {
             <div key={transaction.id} className="card">
               <div className="details-div">
                 <div className="transaction-card-details">
-                  <p>
-                    <strong>Transaction date: </strong>
+                  <div>
+                    <p><strong>Transaction date: </strong></p>
                     <p className="transaction-date">
                       {transaction.transactionDate[1]}/
                       {transaction.transactionDate[2]}/
                       {transaction.transactionDate[0]}
                     </p>
-                  </p>
+                  </div>
                   <p>
                     <strong>Remaining balance: </strong>$
                     {transaction.accountTotal}
