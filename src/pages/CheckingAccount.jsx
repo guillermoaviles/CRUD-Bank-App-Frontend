@@ -62,11 +62,11 @@ function CheckingAccount() {
             <div key={transaction.id} className="card">
               <div className="details-div">
                 <div className="transaction-card-details">
-                  <div>
+                  <div className="box">
                     {transaction.amount > 0 ? (
-                      <h2>Received ${transaction.amount}</h2>
+                      <h2 className="received">Received ${transaction.amount}</h2>
                     ) : (
-                      <h2>Sent ${transaction.amount * -1}</h2>
+                      <h2 className="sent">Sent ${transaction.amount * -1}</h2>
                     )}
                     {transaction.amount > 0 ? (
                       <p>
@@ -79,19 +79,24 @@ function CheckingAccount() {
                         {transaction.counterparty}
                       </p>
                     )}
+                  </div>
+                  <div className="box">
+                    <div className="date">
+                      <p>
+                        <strong>Date: </strong>
+                      </p>
+                      <p className="transaction-date">
+                        {transaction.transactionDate[1]}/
+                        {transaction.transactionDate[2]}/
+                        {transaction.transactionDate[0]}
+                      </p>
+                    </div>
+
                     <p>
-                      <strong>Transaction date: </strong>
-                    </p>
-                    <p className="transaction-date">
-                      {transaction.transactionDate[1]}/
-                      {transaction.transactionDate[2]}/
-                      {transaction.transactionDate[0]}
+                      <strong>Remaining balance: </strong>$
+                      {transaction.accountTotal}
                     </p>
                   </div>
-                  <p>
-                    <strong>Remaining balance: </strong>$
-                    {transaction.accountTotal}
-                  </p>
                 </div>
               </div>
             </div>

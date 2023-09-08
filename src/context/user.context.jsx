@@ -12,10 +12,25 @@ function UserContextWrapper(props) {
 
   useEffect(() => {
     console.log("useEffect - Initial render (Mounting)");
-    axios.get(apiURL).then((response) => {
-      setUser(response.data);
-      setIsLoading(false);
-    });
+
+    // Function to fetch user data
+    const fetchUserData = () => {
+      axios.get(apiURL).then((response) => {
+        setUser(response.data);
+        setIsLoading(false);
+      });
+    };
+
+    // Fetch user data initially
+    fetchUserData();
+
+    // Set up an interval to fetch data every second
+    const intervalId = setInterval(fetchUserData, 1000);
+
+    // Clean up the interval when the component unmounts
+    return () => {
+      clearInterval(intervalId);
+    };
   }, []);
 
   return (

@@ -73,6 +73,7 @@ form {
   justify-content: space-between;
   max-height: 90vh;
   width: 75vw;
+  margin-left: auto;
 }
 
 /* .card {
@@ -87,6 +88,26 @@ form {
   border-radius: 10px;
 } */
 
+.transaction-card-details {
+  display: flex;
+  justify-content: space-evenly;
+  width: 500px;
+}
+
+.box {
+  margin: auto;
+  width: 200px;
+  text-align: start;
+}
+
+.received {
+  color:darkgreen ;
+}
+
+.sent {
+  color:#b40e28
+}
+
 .loading-transaction {
   height: 50px;
   padding: 15px;
@@ -95,7 +116,13 @@ form {
 
 .details-div {
   display: flex;
-  height: 300px;
+  justify-content: space-evenly;
+  height: 100px;
+}
+
+.date {
+  display: flex;
+
 }
 
 .link-card {
@@ -177,9 +204,17 @@ form {
 }
 
 .card {
+  flex: 0 0 calc(50% - 10px); /* Adjust the width as needed */
+  margin-bottom: 50px;
+  background: rgb(255, 255, 255);
+  border-radius: 10px;
+}
+
+.buttons-card {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 10px;
+  padding: 10px;
   margin-bottom: 50px;
   background: rgb(255, 255, 255);
   border-radius: 10px;

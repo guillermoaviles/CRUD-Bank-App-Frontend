@@ -74,6 +74,7 @@ function InvestmentAccount() {
         `http://localhost:8080/api/accounts/investment/withdraw/${accountId}/${amount}`
       )
       .then((response) => {
+        setFetching(true);
         setAmount("");
       });
   };
@@ -105,7 +106,7 @@ function InvestmentAccount() {
             <div key={transaction.id} className="card">
               <div className="details-div">
                 <div className="transaction-card-details">
-                  <div>
+                  <div className="box">
                     <p>
                       <strong>Transaction date: </strong>
                     </p>
@@ -115,13 +116,16 @@ function InvestmentAccount() {
                       {transaction.transactionDate[0]}
                     </p>
                   </div>
-                  <p>
+                  <div className="box">
+                    <p>
                     <strong>Remaining equity: </strong>$
                     {transaction.accountTotal}
                   </p>
                   <p>
                     <strong>Amount: </strong>${transaction.amount}
                   </p>
+                  </div>
+                  
                 </div>
               </div>
             </div>

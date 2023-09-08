@@ -30,13 +30,19 @@ function SendMoney() {
         const checkingAccounts = checkingResponse.data;
 
         // Fetch investment accounts
+        const savingsResponse = await axios.get(
+          "http://localhost:8080/api/accounts/savings"
+        );
+        const savingsAccounts = savingsResponse.data;
+
+        // Fetch investment accounts
         const investmentResponse = await axios.get(
           "http://localhost:8080/api/accounts/investment"
         );
         const investmentAccounts = investmentResponse.data;
 
         // Merge checking and investment accounts into a single array
-        mergedAccounts = [...checkingAccounts, ...investmentAccounts];
+        mergedAccounts = [...checkingAccounts, ...savingsAccounts, ...investmentAccounts];
 
         // Set the merged accounts in state
         setAllAccounts(mergedAccounts);

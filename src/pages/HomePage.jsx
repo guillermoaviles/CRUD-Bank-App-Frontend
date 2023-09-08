@@ -27,45 +27,44 @@ function HomePage() {
       owner: user.name,
     };
     axios
-    .post(
-      `http://localhost:8080/api/users/addCheckingAccount/${user.id}`,
-      body
-    )
-    .then((response) => {
-    });
-  }
+      .post(
+        `http://localhost:8080/api/users/addCheckingAccount/${user.id}`,
+        body
+      )
+      .then((response) => {});
+  };
 
   const handleAddSavingsAccount = () => {
     const body = {
       owner: user.name,
     };
     axios
-    .post(
-      `http://localhost:8080/api/users/addSavingsAccount/${user.id}`,
-      body
-    )
-    .then((response) => {
-    });
-  }
-  
+      .post(
+        `http://localhost:8080/api/users/addSavingsAccount/${user.id}`,
+        body
+      )
+      .then((response) => {});
+  };
+
   const handleAddInvestmentAccount = () => {
     const body = {
       owner: user.name,
     };
     axios
-    .post(
-      `http://localhost:8080/api/users/addInvestmentAccount/${user.id}`,
-      body
-    )
-    .then((response) => {
-    });
-  }
+      .post(
+        `http://localhost:8080/api/users/addInvestmentAccount/${user.id}`,
+        body
+      )
+      .then((response) => {});
+  };
 
   return (
     <div className="home-container">
       <h1 className="welcome">Welcome to your account, {user?.name}.</h1>
       <div className="link-card" onClick={handleCheckingAccountsClick}>
-        <h2 className="account-type">My Checking Accounts ({user?.checkingAccounts.length})</h2>
+        <h2 className="account-type">
+          My Checking Accounts ({user?.checkingAccounts.length})
+        </h2>
       </div>
       {user?.checkingAccounts &&
         showCheckingAccounts &&
@@ -82,18 +81,21 @@ function HomePage() {
         ))}
 
       <div className="link-card" onClick={handleSavingsAccountsClick}>
-        <h2 className="account-type">My Savings Accounts (1)</h2>
+        <h2 className="account-type">My Savings Accounts ({user?.savingsAccounts.length})</h2>
       </div>
-      {showSavingsAccounts && (
-        <>
-          <div className="account-card">
-            <Link className="link" to={`/user/accounts/savings/${user?.id}/${savingsAccount.accountNumber}`}>
-              <h2>Savings Account 1</h2>
-              <p>Available Balance: $150</p>
+      {user?.savingsAccounts &&
+        showSavingsAccounts &&
+        user.savingsAccounts.map((savingsAccount) => (
+          <div className="account-card" key={savingsAccount.accountNumber}>
+            <Link
+              className="link"
+              to={`/user/accounts/savings/${user?.id}/${savingsAccount.accountNumber}`}
+            >
+              <h2>Savings Account {savingsAccount.accountNumber}</h2>
+              <p>Available Balance: ${savingsAccount.balance}</p>
             </Link>
           </div>
-        </>
-      )}
+        ))}
       <div className="link-card" onClick={handleInvestmentAccountsClick}>
         <h2 className="account-type">
           My Investment Accounts ({user?.investmentAccounts.length})
@@ -113,7 +115,7 @@ function HomePage() {
           </div>
         ))}
 
-      <div className="card">
+      <div className="buttons-card">
         <Link className="card-button" to={`/user/sendMoney/${user?.id}`}>
           Send Money
         </Link>
