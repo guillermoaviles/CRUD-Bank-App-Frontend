@@ -71,11 +71,12 @@ function InvestmentAccount() {
   const handleWithdraw = () => {
     axios
       .patch(
-        `http://localhost:8080/api/accounts/investment/withdraw/${accountId}/${amount}`
+        `http://localhost:8080/api/users/withdraw/${accountId}/${amount}`
       )
       .then((response) => {
         setFetching(true);
         setAmount("");
+        window.location.reload();
       });
   };
 

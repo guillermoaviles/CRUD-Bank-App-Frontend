@@ -32,6 +32,7 @@ function HomePage() {
         body
       )
       .then((response) => {});
+      window.location.reload();
   };
 
   const handleAddSavingsAccount = () => {
@@ -44,6 +45,7 @@ function HomePage() {
         body
       )
       .then((response) => {});
+      window.location.reload();
   };
 
   const handleAddInvestmentAccount = () => {
@@ -56,6 +58,7 @@ function HomePage() {
         body
       )
       .then((response) => {});
+      window.location.reload();
   };
 
   return (
